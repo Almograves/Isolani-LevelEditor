@@ -1,0 +1,148 @@
+<!--
+  Project: Isolani Level Editor
+  Description: Browser-based level editor for Isolani game
+
+ * This file is part of Isolani Level Editor.
+ * Copyright (C) 2025 Felix/Almograves
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+ 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isolani Level Editor</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/right.css">
+
+  <script type="module" src="js/boardGrid.js" defer></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-column">
+      <header class="header">
+        <span>Isolani</span>
+        <span>browser-based level editor</span>
+        <button id="render-btn">Render</button>
+      </header>
+      <main class="main-content">
+        <section class="board-grid"></section>
+        <div class="source-tabs">
+          <div class="tab-bar">
+            <button class="tab active" data-tab="board">Board</button>
+            <button class="tab-add">+</button>
+          </div>
+          <div class="tab-content">
+            <textarea class="source-code" data-tab="board">{
+    "worldName": "Isolani Realm",
+    "globalSize": {
+      "width": 100,
+      "height": 100
+    },
+    "placedZones": [
+      {
+        "zoneId": "none",
+        "worldPosition": {
+          "x": 20,
+          "y": 20
+        },
+        "rotation": 0
+      }
+    ],
+    "discoveredZones": [
+    
+    ],
+    "globalEntities": [
+      {
+        "type": "IsolaniPiece",
+        "position": {
+          "x": 0,
+          "y": 0
+        },
+        "rotation": 0,
+        "properties": {
+          "CollectedFragments": ["northpawn", "eastpawn", "southpawn", "westpawn"],
+          "EquippedFragments": []
+        }
+      }
+    ],
+    "interactivePieceStates": {
+    },
+    "neutralPieceStates": {
+    },
+    "worldState": {
+      "lastCheckpoint": "null",
+      "globalQuestStates": {
+        "mainQuest": 0,
+        "sideQuests": {
+        }
+      }
+    }
+  }</textarea>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="right-column">
+      <div class="entity-info"></div>
+      <div class="add-entity-panel">
+        <button class="add-entity-btn" disabled>Add</button>
+        <div class="add-entity-panel-row">
+          <div class="entity-type-selector-col">
+            <button class="entity-type-tab active" data-entity-type="NeutralPiece">Neutral</button>
+            <button class="entity-type-tab" data-entity-type="EnemyPiece">Enemy</button>
+            <button class="entity-type-tab" data-entity-type="Structure">Structure</button>
+            <button class="entity-type-tab" data-entity-type="Decoration">Decoration</button>
+          </div>
+          <div class="entity-subtype-selector-col">
+            <div class="entity-subtype-selector structure-subtype-selector">
+              <button class="entity-subtype-tab active" data-structure-type="Wall">Wall</button>
+              <button class="entity-subtype-tab" data-structure-type="Safezone">Safezone</button>
+              <button class="entity-subtype-tab" data-structure-type="Checkpoint">Checkpoint</button>
+            </div>
+            <div class="entity-subtype-selector neutralpiece-subtype-selector">
+              <!-- Add neutral subtypes here if needed -->
+            </div>
+            <div class="entity-subtype-selector decoration-subtype-selector" style="display:none;"></div>
+            <div class="entity-subtype-selector enemypiece-subtype-selector" style="display:none;">
+              <button class="entity-subtype-tab active" data-piece-type="King">King</button>
+              <button class="entity-subtype-tab" data-piece-type="Queen">Queen</button>
+              <button class="entity-subtype-tab" data-piece-type="Rook">Rook</button>
+              <button class="entity-subtype-tab" data-piece-type="Bishop">Bishop</button>
+              <button class="entity-subtype-tab" data-piece-type="Knight">Knight</button>
+              <button class="entity-subtype-tab" data-piece-type="Pawn">Pawn</button>
+            </div>
+          </div>
+        </div>
+        <div class="entity-enemy-faction-selector" style="display:none;">
+          <span>Faction: </span>
+          <button class="entity-enemy-faction-north">N</button>
+          <button class="entity-enemy-faction-east">E</button>
+          <button class="entity-enemy-faction-south">S</button>
+          <button class="entity-enemy-faction-west">W</button>
+        </div>
+        <textarea class="entity-template-json"></textarea>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

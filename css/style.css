@@ -1,0 +1,60 @@
+/*
+ * This file is part of Isolani Level Editor.
+ * Copyright (C) 2025 Felix/Almograves
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */ 
+
+:root {
+    --color-bg: #f8f7f2;
+    --color-offwhite: #f4ecd8;
+    --color-accent1: #ffc14f;
+    --color-accent2: #3986ce;
+    --color-accent3: #d64444;
+    --color-accent4: #3cd45a;
+    --color-border: #b0aea7;
+    --main-font: 'Segoe UI', 'Arial', sans-serif;
+    --mono-font: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+    --border-width: 2px;
+    --spacing: 6px;
+}
+
+body {
+    background: var(--color-bg);
+    color: #222;
+    font-family: var(--main-font);
+    margin: 0;
+    height: 100vh;
+}
+
+button {
+    background: var(--color-accent1);
+    color: #fff;
+    border: none;
+    border: var(--border-width) var(--color-border) solid;
+    padding: var(--spacing);
+    border-radius: 6px;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+}
+
+button:hover,
+button:focus {
+    background: var(--color-accent2);
+    color: #fff;
+}

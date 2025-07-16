@@ -1,0 +1,204 @@
+/*
+ * This file is part of Isolani Level Editor.
+ * Copyright (C) 2025 Felix/Almograves
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */ 
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    min-width: 320px;
+    border-right: var(--border-width) solid var(--color-border);
+    box-sizing: border-box;
+    height: 100vh;
+    min-height: 0;
+}
+
+.header {
+    height: 5vh;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
+    padding: 0 var(--spacing);
+    background: var(--color-bg);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    justify-content: space-between;
+}
+
+.header span:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-accent1);
+    margin-right: var(--spacing);
+}
+
+.header span:last-child {
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #888;
+    margin-right: auto;
+}
+
+.main-content {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    padding: 0;
+    background: var(--color-offwhite);
+    display: flex;
+    flex-direction: row;
+}
+
+.board-grid {
+    flex: 3 1 0;
+    min-width: 0;
+    min-height: 0;
+    border-right: var(--border-width) solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+}
+
+.source-code {
+    flex: 2 1 0;
+    min-width: 0;
+    min-height: 80vh;
+    padding: var(--spacing);
+    font-family: var(--mono-font);
+    font-size: 1.1rem;
+    background: var(--color-bg);
+    resize: vertical;
+    outline: none;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.source-tabs {
+    display: flex;
+    flex-direction: column;
+    flex: 2 1 0;
+    min-width: 0;
+    min-height: 80vh;
+    margin: var(--spacing);
+    background: var(--color-bg);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.tab-bar {
+    display: flex;
+    border-bottom: var(--border-width) solid var(--color-border);
+    background: var(--color-offwhite);
+    border-radius: 4px 4px 0 0;
+    overflow-x: auto;
+}
+
+.tab {
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    padding: 8px 18px;
+    font-family: var(--main-font);
+    font-size: 1rem;
+    cursor: pointer;
+    border-right: var(--border-width) solid var(--color-border);
+    background: var(--color-bg);
+    color: #222;
+    transition: background 0.2s;
+}
+
+.tab:last-child {
+    border-right: none;
+}
+
+.tab.active {
+    background: var(--color-accent2);
+    color: #fff;
+    font-weight: bold;
+}
+
+.tab-add {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 8px 14px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--color-accent2);
+    background: var(--color-bg);
+    border-radius: 0 4px 0 0;
+}
+
+.tab-content {
+    flex: 1 1 0;
+    min-height: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.tab-content textarea.source-code {
+    display: none;
+    width: 100%;
+    height: 100%;
+    resize: vertical;
+}
+
+.tab-content textarea.source-code.active {
+    display: block;
+}
+
+.tab-close {
+    border: none;
+    background: none;
+    color: var(--color-accent3);
+    font-size: 1.1em;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: color 0.2s, opacity 0.2s;
+    padding: 0 4px;
+}
+
+.tab:hover .tab-close {
+    opacity: 1;
+}
+
+.tab-close:hover {
+    opacity: 1;
+}
+
+#render-btn {
+    background: var(--color-accent4);
+}
+
+#render-btn:hover,
+#render-btn:focus {
+    background: var(--color-accent1);
+} 
