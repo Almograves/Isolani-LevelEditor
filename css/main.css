@@ -78,6 +78,7 @@
     border-right: var(--border-width) solid var(--color-border);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .source-code {
