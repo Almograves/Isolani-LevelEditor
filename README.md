@@ -1,6 +1,7 @@
 # Isolani Level Editor
 
 A browser-based level editor for the game Isolani.
+This tool is not built for intuitive use!
 
 ## Features
 - Visual board and zone editing
