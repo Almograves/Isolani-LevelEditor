@@ -43,6 +43,7 @@ export function renderStructures(ctx, zoom, offsetX, offsetY, boardHeight, zoneD
     ctx.textBaseline = 'middle';
     let label = '?';
     if (entity.properties.structureType === 'Wall') label = 'W';
+    else if (entity.properties.structureType === 'TallWall') label = 'T';
     else if (entity.properties.structureType === 'Checkpoint') label = 'C';
     else if (entity.properties.structureType === 'Safezone') label = 'S';
     ctx.fillText(label, gx * 20 + 10, gy * 20 + 10);
@@ -156,7 +157,7 @@ export function renderGlobalStructures(ctx, zoom, offsetX, offsetY, boardHeight,
   for (let i = 0; i < globalEntities.length; i++) {
     const entity = globalEntities[i];
     if (entity.type !== 'Structure') continue;
-    if (!entity.properties || entity.properties.structureType !== 'Wall') continue;
+    if (!entity.properties || (entity.properties.structureType !== 'Wall' && entity.properties.structureType !== 'TallWall')) continue;
     const gx = entity.position.x;
     const gy = entity.position.y;
     // Draw structure cell (cyan)
@@ -173,7 +174,8 @@ export function renderGlobalStructures(ctx, zoom, offsetX, offsetY, boardHeight,
     ctx.font = `${14 / zoom}px monospace`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('W', gx * 20 + 10, gy * 20 + 10);
+    let label = entity.properties.structureType === 'TallWall' ? 'T' : 'W';
+    ctx.fillText(label, gx * 20 + 10, gy * 20 + 10);
     ctx.restore();
     clickableEntities.push({
       entityType: 'Structure',
