@@ -77,22 +77,43 @@ export function setupEntityAddPanel() {
 
   // Helper to build template
   function buildEntityTemplate(x = 0, y = 0, localX = 0, localY = 0) {
-    const { type, subtype } = getCurrentEntitySelection();
+    const { type, subtype, faction } = getCurrentEntitySelection();
     // If we're adding to a zone, use local coordinates
     const useLocal = lastCell.zoneId != null;
     const pos = useLocal ? { x: localX, y: localY } : { x, y };
+    
     if (type === 'EnemyPiece') {
+      // Set rotation based on faction
+      let rotation = 0;
+      switch (faction) {
+        case 'North':
+          rotation = 0;
+          break;
+        case 'East':
+          rotation = -90;
+          break;
+        case 'South':
+          rotation = 180;
+          break;
+        case 'West':
+          rotation = 90;
+          break;
+        default:
+          rotation = 0; // fallback to North
+      }
+      
       return JSON.stringify({
         type: 'EnemyPiece',
         position: pos,
-        rotation: 0,
+        rotation: rotation,
         properties: {
-          faction: getCurrentEntitySelection().faction,
+          faction: faction,
           pieceType: subtype,
           movementFragments: []
         }
       }, null, 4);
     }
+    
     if (type === 'Structure') {
       const template = {
         type: 'Structure',
@@ -103,6 +124,7 @@ export function setupEntityAddPanel() {
       if (subtype === 'Checkpoint') template.properties.checkpointId = "";
       return JSON.stringify(template, null, 4);
     }
+    
     // Add more templates for other types if needed
     return '{}';
   }
